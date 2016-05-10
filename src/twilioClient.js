@@ -1,4 +1,4 @@
-var config = require('./config');
+var config = require('../config');
 var client = require('twilio')(config.accountSid, config.authToken);
 
 module.exports.sendSms = function(to, message) {
@@ -6,7 +6,7 @@ module.exports.sendSms = function(to, message) {
     body: message,
     to: to,
     from: config.sendingNumber
-//  mediaUrl: imageUrl
+  //  mediaUrl: imageUrl
   }, function(err, data) {
     if (err) {
       console.error('Could not notify administrator');

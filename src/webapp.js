@@ -6,7 +6,7 @@ var flash = require('connect-flash');
 var morgan = require('morgan');
 var csurf = require('csurf');
 
-var config = require('./config');
+var config = require('../config');
 var twilioNotifications = require('./middleware/twilioNotifications');
 
 // Create Express web app

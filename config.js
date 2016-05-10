@@ -2,9 +2,14 @@ var dotenv = require('dotenv');
 var cfg = {};
 
 if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
-  dotenv.config({path: '.env'});
+  dotenv.config({
+    path: '.env'
+  });
 } else {
-  dotenv.config({path: '.env.test', silent: true});
+  dotenv.config({
+    path: '.env.test',
+    silent: true
+  });
 }
 
 // HTTP Port to run our web application
@@ -30,10 +35,17 @@ var isConfigured = requiredConfig.every(function(configValue) {
 });
 
 if (!isConfigured) {
-  var errorMessage =
-    'TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, and TWILIO_NUMBER must be set.';
+  var errorMessage = 'TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, and TWILIO_NUMBER must be set.';
 
   throw new Error(errorMessage);
+}
+
+//cloudant info
+cfg.cloudant = {
+  url: fantasybasketball.cloudant.com,
+  username: process.env.USERNAME,
+  password: process.env.PASSWORD,
+  tradesDB: 'trades'
 }
 
 // Export configuration object
